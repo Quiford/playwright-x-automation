@@ -3,24 +3,25 @@
 An asynchronous browser automation framework built with Python and Playwright for real-time X (Twitter) monitoring, queue-based task processing, and automated workflow execution.
 
 This project demonstrates:
-- browser automation
-- asynchronous processing
-- SQLite persistence
-- queue management
-- configuration-driven workflows
-- Telegram notifications
-- duplicate prevention systems
-- and automation architecture design
 
-The framework operates entirely through a real Chromium browser using Playwright and does not rely on external APIs.
+- Browser automation with Playwright
+- Async Python architecture using asyncio
+- Queue-based workflow orchestration
+- SQLite persistence systems
+- Duplicate prevention safeguards
+- Telegram event notifications
+- Human-like browser interaction simulation
+- Modular automation framework design
+
+The framework operates entirely through a real Chromium browser session and does not rely on external APIs.
 
 ---
 
 # Features
 
 - Real-time X timeline monitoring
-- Playwright-powered browser automation
-- Queue-based reply scheduling
+- Playwright-powered Chromium automation
+- Queue-based task scheduling
 - SQLite persistence layer
 - Duplicate reply prevention
 - Per-account cooldown protection
@@ -33,51 +34,92 @@ The framework operates entirely through a real Chromium browser using Playwright
 
 ---
 
+# Screenshots
+
+## Console Logs
+
+Shows real-time monitoring, queue processing, and runtime execution logs.
+
+![Console Logs](./screenshots/logs.png)
+
+---
+
+## Playwright Browser Automation
+
+Visible Chromium browser running through Playwright while monitoring the X Following timeline.
+
+![Playwright Browser](./screenshots/playwright-browser-running.png)
+
+---
+
+## Telegram Notifications
+
+Real-time Telegram alerts for queue events, successful executions, and monitoring activity.
+
+![Telegram Notifications 1](./screenshots/Telegram-notifications-1.png)
+
+![Telegram Notifications 2](./screenshots/Telegram-notifications-2.png)
+
+---
+
+## System Architecture
+
+High-level automation architecture and workflow overview.
+
+![Architecture Diagram](./screenshots/architecture-diagram.jpg)
+
+---
+
 # Project Structure
+
+```text
 playwright-x-automation/
 │
 ├── config/
-│   └── settings.py          # Pydantic configuration loader
+│   └── settings.py
 │
 ├── watcher/
-│   └── monitor.py           # Timeline monitoring & scraping
+│   └── monitor.py
 │
 ├── scheduler/
-│   └── queue.py             # Queue management & scheduling logic
+│   └── queue.py
 │
 ├── responder/
-│   └── engine.py            # Browser-based action execution
+│   └── engine.py
 │
 ├── storage/
-│   └── database.py          # SQLite persistence layer
+│   └── database.py
 │
 ├── notifier/
-│   └── telegram.py          # Telegram event notifications
+│   └── telegram.py
 │
 ├── utils/
-│   ├── logger.py            # Logging utilities
-│   ├── mutation.py          # Text mutation utilities
-│   └── proxy.py             # Proxy configuration helpers
+│   ├── logger.py
+│   ├── mutation.py
+│   └── proxy.py
 │
 ├── data/
-│   ├── accounts.json        # Target account list
-│   └── replies.json         # Reply template pool
+│   ├── accounts.json
+│   └── replies.json
+│
+├── screenshots/
 │
 ├── .env.example
 ├── requirements.txt
 ├── README.md
 └── main.py
+````
 
 ---
 
 # Technology Stack
 
-- Python
-- Playwright
-- SQLite
-- asyncio
-- Pydantic Settings
-- Telegram Bot API
+* Python
+* Playwright
+* SQLite
+* asyncio
+* Pydantic Settings
+* Telegram Bot API
 
 ---
 
@@ -98,55 +140,75 @@ playwright-x-automation/
 
 The framework includes multiple safeguards to prevent duplicate actions:
 
-- Processed tweet tracking
-- Queue-level duplicate protection
-- Per-account cooldown management
-- Daily action limits
-- Async locking to prevent concurrent execution
-- Self-account filtering
-- Persistent state tracking across restarts
+* Processed tweet tracking
+* Queue-level duplicate protection
+* Per-account cooldown management
+* Daily action limits
+* Async locking to prevent concurrent execution
+* Self-account filtering
+* Persistent state tracking across restarts
 
 ---
 
 # Installation
 
 ## 1. Clone the Repository
+
+```bash
 git clone https://github.com/Quiford/playwright-x-automation.git
 cd playwright-x-automation
+```
 
 ---
 
 ## 2. Install Dependencies
+
+```bash
 pip install -r requirements.txt
 playwright install chromium
+```
 
 ---
 
 ## 3. Configure Environment Variables
 
 Copy the example configuration file:
-copy .env.example .env
 
-Edit .env with your preferred settings.
+```bash
+copy .env.example .env
+```
+
+Then edit `.env` with your preferred settings.
 
 ---
 
 ## 4. Configure Target Accounts
 
 Edit:
+
+```text
 data/accounts.json
+```
 
 Example:
+
+```json
 [
-  { "handle": "example_account" }
+  {
+    "handle": "example_account"
+  }
 ]
+```
 
 ---
 
 ## 5. Configure Reply Templates
 
 Edit:
+
+```text
 data/replies.json
+```
 
 Add custom reply templates.
 
@@ -154,36 +216,43 @@ Add custom reply templates.
 
 ## 6. First Launch
 
-Run:
+```bash
 py main.py
+```
 
 On first launch:
-- Chromium opens
-- Log into X manually
-- Session state is stored locally for reuse
+
+* Chromium opens automatically
+* Log into X manually
+* Session state is stored locally for reuse
 
 ---
 
 # Telegram Notifications
 
 Optional Telegram integration supports:
-- queued event notifications
-- successful action alerts
-- failure/error alerts
-- startup/shutdown notifications
+
+* Queue event notifications
+* Successful execution alerts
+* Failure/error alerts
+* Startup/shutdown notifications
 
 Configure in:
+
+```text
 .env
+```
 
 ---
 
 # Persistence Layer
 
 SQLite is used for:
-- processed item tracking
-- queue management
-- cooldown storage
-- execution state persistence
+
+* Processed item tracking
+* Queue management
+* Cooldown storage
+* Execution state persistence
 
 This allows the framework to recover cleanly after restarts without reprocessing old items.
 
@@ -191,14 +260,14 @@ This allows the framework to recover cleanly after restarts without reprocessing
 
 # Key Engineering Concepts Demonstrated
 
-- Async Python architecture
-- Browser automation
-- Queue processing systems
-- Persistent state management
-- Automation workflow orchestration
-- Real-time event monitoring
-- Fault-tolerant task execution
-- Modular Python project structure
+* Async Python architecture
+* Browser automation
+* Queue processing systems
+* Persistent state management
+* Automation workflow orchestration
+* Real-time event monitoring
+* Fault-tolerant task execution
+* Modular Python project structure
 
 ---
 
@@ -212,7 +281,10 @@ Users are responsible for complying with platform policies and applicable laws w
 
 # Author
 
-Yusuf Afolabi
+Afolabi Yusuf Oladipupo
 
 GitHub:
 https://github.com/Quiford
+
+```
+```
